@@ -1,0 +1,208 @@
+/*Es bueno el preparar la hoja de estilos previamente para poder darle los atributos necesarios a los objetos*/
+html,body{
+	margin:0;
+	height:100%;
+	width:100%;
+	
+}
+#fondo_cielo{
+	position:relative;
+	height:100%;
+	width:100%;
+	
+	background:#06B5FF url(cielo/fondo-nubes.png) repeat-x left bottom;
+	overflow:hidden;
+	
+	animation:animacionCielo 15s linear infinite;
+}
+/*Al utilizar el comando keyframe debemos relacionarlo con la oreden animation. El keyframes, como hemos comentado antes, es el mapa de dirección que vamos a trabajar. En este caso concreto queremos que se mueva el fondo, con lo que en este caso hemos etiquetado los div en la página html para darles los atributos que queremos que desarrollen. Los atributos anim,ation se colocan dentro de las llaves del objeto que queremos que se muevan. Dicho atributo es la orden que ejecuta la ruta (keyframes) que hemos desarrollado anteriormente. IMPORTANTE Recordarla ortografía y los signos, pueden dar al traste con cualquier comando o etiqueta que demos en las hojas html ocss */
+
+@keyframes animacionCielo{
+	from{
+		background-position:0 bottom;
+	}
+	to{
+		background-position:960px bottom;
+	}
+}
+.nube{
+	position:absolute;
+	height:194px;
+	width:281px;
+	background:url(cielo/nube.png);
+	
+}
+#nube1{
+	opacity:0.7;
+	transform:scale(0.5,0.5);
+	animation:animacionNube1 20s linear infinite;
+	
+}
+#nube2{
+	opacity:0.5;
+	transform:scale(0.7,0.7);
+	animation:animacionNube2 150s linear infinite;
+	
+}
+
+#nube3{
+	opacity:0.9;
+	
+	animation:animacionNube3 15s linear infinite;
+	
+}
+#nube4{
+	opacity:0.7;
+	transform:scale(0.7,0.7);
+	animation:animacionNube4 14s cubic-bezier(1,.6,.34,.92) infinite;
+	
+}
+
+
+@keyframes animacionNube1{
+	from{
+			left:-281px;
+			top:50px;
+	}
+	to{
+		left:100%;
+		top:150px;
+	}
+}
+@keyframes animacionNube2{
+	from{
+			left:-281px;
+			top:90px;
+	}
+	to{
+		left:100%;
+		top:200px;
+	}
+}
+
+@keyframes animacionNube3{
+	0%{
+		left:-281px;
+		top:300px;
+		transform:scale(0.85,0.85) rotate(-45deg);
+	}
+	25%{
+		top:30px;
+		transform:scale(0.85,0.85) rotate(0deg);
+	}
+	50%{
+		
+		transform:scale(0.85,0.85) rotate(45deg);
+	}
+	75%{
+		top:300px;
+		transform:scale(0.85,0.85) rotate(0deg);
+	}
+	100%{
+		top:30px;
+		transform:scale(0.85,0.85) rotate(-45deg);
+		left:100%
+	}
+}
+@keyframes animacionNube4{
+	from{
+			left:-281px;
+			top:197px;
+	}
+	to{
+		left:100%;
+		top:85px;
+	}
+}
+.avion{
+	position:absolute;
+	height:194px;
+	width:281px;
+	background:url(cielo/avion.png);
+}
+#avion1{
+	opacity:1;
+	transform:scale(0.5,0.5);
+	animation:animacionavion1 7s cubic-bezier(1,.6,.34,.92) infinite;	
+	
+}
+@keyframes animacionavion1{
+	from{
+			right:-281px;
+			top:70px;
+	}
+	to{
+		right:100%;
+		top:194px;
+	}
+}
+	
+#avion2{
+	opacity:1;
+	transform:scale(0.7,0.7);
+	bottom:0;
+	top:auto;
+	left:-140px;
+	position:absolute;	
+	animation:animacionavion2 15s infinite;
+	
+}
+/*En este caso en concreto estamos dándole un efecto looping al segundo avion. Es un efecto que debo trabajar más, pero la idea no es darle movimiento al objeto en siu, sino darle movimiento a partir de la creación de una caja (div) colocando dentro el elemento que queremos mover,ya que queremos darle el efecto a la caja o capa que queremos animar. El ejercicio de hoy es especialmente interesante para aprender a utilizar todas las cajas que necesitemos para añadir efectos, es decir, es mucho mejor crear todas las cajas que necesitemos añadiendo un sólo efecto, el ususario al final verá todos los efectos en su conjunto.*/	
+	
+@keyframes animacionavion2{
+	0%{
+
+		transform:scale(0.6,0.6);
+		
+	}
+	25%{
+	
+		transform:scale(0.6,0.6);
+	}
+	50%{
+		transform:scale(0.4,0.4);
+	}
+	75%{
+	
+		transform:scale(0.6,0.6);
+	}
+	100%{
+	
+		transform:scale(0.8,0.8);
+		
+	}
+	
+}
+#looping{
+	position:absolute;
+	width:0;
+	height:80%;
+	top:10%;
+	right:50%;
+	/*border:1px solid red;*/
+	animation:animacionlooping 15s linear infinite;
+	
+}
+@keyframes animacionlooping{
+	0%{
+		right:-140px;
+		transform:rotate(0);
+		
+	}
+	25%{
+		right:50%;
+		transform:rotate(0);
+	}
+	
+	75%{
+		right:50%;
+		transform:rotate(360deg);
+	}
+	100%{
+		right:calc(100% + 140px);
+		transform:rotate(360deg);
+		
+	}
+}	
+/*Hay solo cuatro comandos con @: @font-face,@import, @keyframes,@media. El ultimo (@media) nos servirá para hacer que nuestros elementos sean responsives*/
+	
